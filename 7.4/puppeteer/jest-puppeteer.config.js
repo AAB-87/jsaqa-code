@@ -1,9 +1,7 @@
-module.exports = {
-    launch: {
-        headless: false,
-        defaultViewport: null,
+module.exports = { // экспортируем настройки
+    launch: { // конфигурация запуска
+        headless: false, // для отладки, чтобы видеть работу браузера
+        defaultViewport: null, // устанавливает размер экрана для каждой новой страници
         args: ['--start-maximized'] //— используем максимальный размер окна браузера
-      },
-    
-  };
-  
+    },
+};
