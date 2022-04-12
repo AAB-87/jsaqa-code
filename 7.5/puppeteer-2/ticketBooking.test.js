@@ -48,25 +48,36 @@ afterEach(async () => { // этот блок запускается после �
 //   expect(actual).toContain('7/5');
 // });
 
-test("Checking that seats are booked", async () => { // проверяем что наши места забронированы
+test("Checking that seat are booked", async () => { // проверяем что наши места забронированы
   await page.goto('http://qamid.tmweb.ru/client/index.php'); // снова открываем стартовую страницу
   await page.click('nav > a:nth-child(3)'); // кликаем по вкладке "Чт, 14"
   await page.click('body > main > section:nth-child(2) > div.movie-seances__hall > ul > li'); // кликаем по ссылке "19:00"
-  await page.click('div:nth-child(7) > span:nth-child(5)'); // кликаем по выбранному месту
+  await page.click('span.buying-scheme__chair_taken'); // кликаем по выбранному месту
+
+  const button = await page.$('button')
+  // button.getAttribute('disabled');
+  // expect(button).toContain("true");
+  console.log(button);
+
+});
 
   // Остановился на Задаче 1 п.3
   // Не раелизован асёршн на проверку возможности выбрать ранее забронированные метса
-  actual = await page.$('button');
-  expect(actual).toContain("disabled: true");
+  // const brokSeat = button.getAttribute('disabled');
+  // actual = await page.$('button'.getAttribute('disabled'));
+  // actual = await page.$(('button').getAttribute('disabled'));
+  // actual = await page.$(button.getAttribute('disabled'));
+  // actual = await page.$('button').getAttribute('disabled');
+  // expect(actual).toContain("true");
 
   // expect(actual).toHaveProperty("true");
-  // expect(actual).toEquql("true");
+  // expect(actual).toEqual("true");
   // expect(actual).toHaveProperty('disabled', true);
   // expect(actual).toHaveProperty("true");
   // expect(actual).toBe("true");
   // actual = await page.$('button', link => link.textContent);
   // await expect(actual).toContain('disabled = true');
-});
+
 
 
 // вызов тестаs
