@@ -7,13 +7,15 @@
     "test": "jest",
     "cucumber": "cucumber-js"
   },
-  "author": "AAndrey",
+  "author": "A.Andrey",
   "license": "ISC",
   "dependencies": {
-    "cucumber": "^7.0.0-rc.0",
+    "chai": "^4.3.6",
     "jest": "^27.5.1",
     "jest-puppeteer": "^6.1.0",
-    "puppeteer": "^13.5.2",
-    "chai": "^4.3.6"
+    "puppeteer": "^13.5.2"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.0.0"
   }
 }

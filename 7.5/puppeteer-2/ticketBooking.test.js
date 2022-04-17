@@ -19,12 +19,12 @@ describe("Go to the cinema test", () => {
     expect(actual).toContain('19');
   });
 
-  test("Should choose a time 19:00 and check session", async () => { // проверяем что ссылка ведёт на нужный сеанс
+  test("Should choose a time and check session", async () => { // проверяем что ссылка ведёт на нужный сеанс
     await page.goto('http://qamid.tmweb.ru/client/index.php'); // открываем страницу тестированя
     await clickElement(page, 'nav > a:nth-child(3)'); // кликаем по вкладке "Вт, 19"
     await clickElement(page, 'body > main > section:nth-child(2) > div.movie-seances__hall > ul > li'); // кликаем по ссылке "19:00"
 
-    actual = await page.$eval('div > p.buying__info-start', (link) => link.textContent);
+    actual = await getText(page, 'div > p.buying__info-start');
     expect(actual).toContain('Начало сеанса: 19:00');
   });
 });
@@ -37,7 +37,7 @@ test.skip("Should choose аnd book a seat", async () => { // выбираем м
   await clickElement(page, 'button'); // кликаем по кнопке "Забронировать"
   await clickElement(page, 'button'); // кликаем по кнопке "получить код бронирования"
 
-  actual = await page.$eval('p:nth-child(2) > span', link => link.textContent); // проверяем что этот селектор содержит наше забронированное место
+  actual = await getText(page, 'p:nth-child(2) > span'); // проверяем что этот селектор содержит наше забронированное место
   expect(actual).toContain('7/5');
 });
 
